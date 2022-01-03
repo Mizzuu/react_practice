@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import ColorfulMessage from "./components/ColorfulMessage";
+import React, { useEffect, useState } from "react";
+import { ColorfulMessage } from "./components/ColorfulMessage";
 
 const App = () => {
   console.log("beggining");
@@ -14,13 +14,16 @@ const App = () => {
     setSeaOtterFlag(!seaOtterFlag);
   };
 
-  if (num > 0) {
-    if (num % 3 === 0) {
-      seaOtterFlag || setSeaOtterFlag(true);
-    } else {
-      seaOtterFlag && setSeaOtterFlag(false);
+  useEffect(() => {
+    if (num > 0) {
+      if (num % 3 === 0) {
+        seaOtterFlag || setSeaOtterFlag(true);
+      } else {
+        seaOtterFlag && setSeaOtterFlag(false);
+      }
     }
-  }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [num]);
 
   return (
     <>
